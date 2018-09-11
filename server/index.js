@@ -25,3 +25,13 @@ pgClient.on('error', () => console.log('Lost PG connection'));
 pgClient.query('CREATE TABLE IF NOT EXISTS VALUES (number INT)')
   .catch(err => console.log(err));
 
+
+// Redis cilent setup
+
+const redisClient = redis.createClient({
+  host: keys.redisHost,
+  prot: keys.redisPort,
+  retry_strategy: () => 1000
+});
+
+const redisPublisher = redisClient.duplicate();
