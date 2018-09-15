@@ -16,5 +16,9 @@ after_success:
   # Login in to docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images & push them to docker hub
-
+  - docker push rizwanzaheer/multi-client
+  - docker push rizwanzaheer/multi-nginx 
+  - docker push rizwanzaheer/multi-server
+  - docker push rizwanzaheer/multi-worker
+ 
 
