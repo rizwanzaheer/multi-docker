@@ -3,4 +3,7 @@
   - docker
 
 before_install:
-  - docker build -t rizwanzahaer/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t rizwanzaheer/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run rizwanzaheer/react-test npm test -- --coverage
