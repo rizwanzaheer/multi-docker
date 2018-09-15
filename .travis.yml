@@ -7,3 +7,9 @@ before_install:
 
 script:
   - docker run rizwanzaheer/react-test npm test -- --coverage
+
+after_success:
+  - docker build -t rizwanzaheer/multi-client ./client
+  - docker build -t rizwanzaheer/multi-nginx ./nginx
+  - docker build -t rizwanzaheer/multi-server ./server
+  - docker build -t rizwanzaheer/multi-worker ./worker
