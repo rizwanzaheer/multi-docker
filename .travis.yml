@@ -3,4 +3,4 @@
   = docker
 
 before_install:
-  - docker build -t rizwanzahaer/react-test -f ./client 
+  - docker build -t rizwanzahaer/react-test -f ./client/Dockerfile.dev ./client
