@@ -13,3 +13,8 @@ after_success:
   - docker build -t rizwanzaheer/multi-nginx ./nginx
   - docker build -t rizwanzaheer/multi-server ./server
   - docker build -t rizwanzaheer/multi-worker ./worker
+  # Login in to docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images & push them to docker hub
+
+
