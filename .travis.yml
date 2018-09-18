@@ -1,5 +1,5 @@
- sudo: required
- services:
+sudo: required
+services:
   - docker
 
 before_install:
@@ -13,23 +13,23 @@ after_success:
   - docker build -t rizwanzaheer/multi-nginx ./nginx
   - docker build -t rizwanzaheer/multi-server ./server
   - docker build -t rizwanzaheer/multi-worker ./worker
-  # Login in to docker CLI
+  # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  # Take those images & push them to docker hub
+  # Take those images and push them to docker hub
   - docker push rizwanzaheer/multi-client
-  - docker push rizwanzaheer/multi-nginx 
+  - docker push rizwanzaheer/multi-nginx
   - docker push rizwanzaheer/multi-server
   - docker push rizwanzaheer/multi-worker
- 
+
 deploy:
   provider: elasticbeanstalk
   region: us-west-1
   app: multi-docker
   env: MultiDocker-env
-  bucket_name: elasticbeanstalk-us-west-1-306476627547 
-  bucket_path: docker_multi 
+  bucket_name: elasticbeanstalk-us-west-1-306476627547
+  bucket_path: docker-multi
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
-  secret_key_id: 
+  secret_access_key:
     secure: $AWS_SECRET_KEY
